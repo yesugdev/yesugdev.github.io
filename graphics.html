@@ -25,8 +25,7 @@
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-        Tip 2: you can also add an image using data-image tag
-    -->
+        Tip 2: you can also add an image using data-image tag -->
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text" style="margin-bottom: -15px;" >
@@ -37,7 +36,7 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <li>
                         <a class="nav-link" href="index.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Хяналтын самбар</p>
@@ -54,8 +53,8 @@
                             <i class="nc-icon nc-chart-bar-32"></i>
                             <p>Analysis</p>
                         </a>
-                    </li>
-                    <li>
+                    </li>   
+                    <li class="nav-item active">
                         <a class="nav-link" href="./graphics.html">
                             <i class="nc-icon nc-notes"></i>
                             <p>График ба тайлан</p>
@@ -76,11 +75,12 @@
                 </ul>
             </div>
         </div>
+        
         <div class="main-panel">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo"> Dashboard </a>
+                    <a class="navbar-brand" href="#pablo"> График ба тайлан </a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -111,133 +111,86 @@
                 </div>
             </nav>
             <!-- End Navbar -->
+
+            <!-- CONTENT GOES HERE -->
             <div class="content">
                 <div class="container-fluid">
+
+
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Судалгааны статистик</h4>
-                                    <p class="card-category">Нийт судалгааны тоо</p>
+                                    <h4 class="card-title">Хичээлийн судалгаа</h4>
+                                    <p class="card-category">График харуулахын тулд шинжилгээг сонгоно уу</p>
                                 </div>
                                 <div class="card-body">
-                                    <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Анкет судалгаа
-                                        <i class="fa fa-circle text-danger"></i> Ажиглалт
-                                        <i class="fa fa-circle text-warning"></i> Ярилцлага
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Last updated 2 hours ago
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Шинжилгээний нэр</label>
+                                                <select class="form-control" id="analysisSelect">
+                                                    <option value="">Шинжилгээг сонгоно уу</option>
+                                                    <option>1-р анги - HTML Analysis</option>
+                                                    <option>2-р анги - CSS Analysis</option>
+                                                    <option>3-р анги - JavaScript Analysis</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="exportFileType">Export File Type</label>
+                                                <select class="form-control" id="exportFileType" aria-label="File type for exporting">
+                                                    <option value="pdf">PDF</option>
+                                                    <option value="word">WORD</option>
+                                                    <option value="PNG">PNG</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>&nbsp;</label>
+                                                <div>
+                                                    <button class="btn btn-primary btn-fill" onclick="loadGraph()">
+                                                        <i class="fa fa-refresh"></i> Load Graph
+                                                    </button>
+                                                    <button class="btn btn-success btn-fill">
+                                                        <i class="fa fa-download"></i> Export
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Research Activity</h4>
-                                    <p class="card-category">Weekly Research Engagement</p>
-                                </div>
-                                <div class="card-body">
-                                    <div id="chartHours" class="ct-chart"></div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Data Collection
-                                        <i class="fa fa-circle text-danger"></i> Analysis
-                                        <i class="fa fa-circle text-warning"></i> Documentation
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Research Metrics</h4>
-                                    <p class="card-category">Key Performance Indicators</p>
+                                    <h4 class="card-title">Analysis Graph</h4>
+                                    <p class="card-category">Visualization of selected analysis</p>
                                 </div>
                                 <div class="card-body">
-                                    <div id="chartActivity" class="ct-chart"></div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Quality Metrics
-                                        <i class="fa fa-circle text-danger"></i> Timeline Adherence
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-check"></i> Data verified
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card card-tasks">
-                                <div class="card-header">
-                                    <h4 class="card-title">Current Research</h4>
-                                    <p class="card-category">Active Studies</p>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-full-width">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" checked>
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td>Web Development Impact Study</td>
-                                                    <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="View Details" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-eye"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox">
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td>Learning Outcomes Analysis</td>
-                                                    <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="View Details" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-eye"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-refresh"></i> Updated Just Now
+                                    <div id="graphContainer" style="height: 400px;">
+                                        <div class="text-center text-muted" id="graphPlaceholder">
+                                            <i class="fa fa-chart-bar fa-4x mb-3"></i>
+                                            <p>Select an analysis to display graph</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+            <!-- CONTENT END  -->
+
+             <!-- FOOTER START HERE -->
             <footer class="footer">
                 <div class="container-fluid">
                     <nav>
@@ -254,6 +207,7 @@
                     </nav>
                 </div>
             </footer>
+                  <!-- FOOTER START HERE -->
         </div>
     </div>
     
