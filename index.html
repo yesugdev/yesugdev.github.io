@@ -2,155 +2,249 @@
 <html lang="mn">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Сурагчийн танилцуулга</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-100 to-orange-200">
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-100 to-orange-200 p-4">
 
-  <!-- CARD -->
   <div 
-    class="bg-white w-80 rounded-2xl shadow-xl overflow-hidden 
-           transform transition hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
+    class="bg-white w-full max-w-[340px] rounded-2xl shadow-xl overflow-hidden 
+           transform transition hover:-translate-y-2 hover:shadow-2xl cursor-pointer ring-1 ring-black/5"
     onclick="openModal()"
   >
+    <div class="relative w-full h-56 sm:h-48 overflow-hidden">
+      <img src="./images/gunbilegt.jpg" class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100"/>
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format&fit=crop" class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"/>
+      <img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?q=80&w=600&auto=format&fit=crop" class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"/>
 
-    <!-- IMAGE SLIDER -->
-    <div class="relative w-full h-48 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-t from-green-900/70 to-transparent"></div>
 
-      <img src="./images/gunbilegt.jpg"
-           class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100"/>
-
-      <img src="./images/gunbilegt.jpg"
-           class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"/>
-
-      <img src="./images/gunbilegt.jpg"
-           class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"/>
-
-      <!-- gradient overlay -->
-  <div class="absolute inset-0 bg-gradient-to-t from-green-700/60 to-green-200/20"></div>
-
-      <!-- name -->
-      <div class="absolute bottom-3 left-4 text-white">
-        <h2 class="text-lg font-bold">Гүнбилэг</h2>
-        <p class="text-xs opacity-90">6-Б анги</p>
+      <div class="absolute bottom-4 left-5 text-white">
+        <h2 class="text-xl font-bold tracking-wide">Гүнбилэг</h2>
+        <p class="text-sm opacity-90 font-medium">6-Б анги</p>
       </div>
     </div>
 
-    <!-- CARD FOOTER -->
-    <div class="p-5 text-center">
-      <p class="text-xs text-orange-600">
+    <div class="p-5 text-center bg-white">
+      <p class="text-xs font-semibold text-orange-600 uppercase tracking-wider">
         👦 Мэдээлэл • 🏆 Амжилт • 💌 Захидал
       </p>
     </div>
   </div>
 
-  <!-- MODAL -->
-  <div id="modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
-    <div class="bg-white rounded-2xl w-[460px] p-6 relative animate-scaleIn max-h-[90vh] overflow-y-auto">
+  <div id="modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-40 p-4">
+    
+    <div class="bg-white rounded-2xl w-full max-w-lg p-5 sm:p-6 relative animate-scaleIn max-h-[90vh] overflow-y-auto shadow-2xl">
 
       <button 
         onclick="closeModal()"
-        class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-xl"
+        class="absolute top-4 right-4 text-gray-400 hover:text-red-500 bg-gray-100 hover:bg-red-50 rounded-full w-8 h-8 flex items-center justify-center transition-colors"
       >✖</button>
 
-      <!-- HEADER -->
-      <div class="flex items-center gap-4 mb-4">
-        <img src="./images/gunbilegt.jpg"
-             class="w-20 h-20 rounded-xl border-4 border-orange-400 object-cover"/>
-        <div>
-          <h2 class="text-xl font-bold">Гүнбилэг</h2>
-          <p class="text-sm text-gray-500">6-Б анги</p>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 pr-8">
+        <div class="relative">
+            <img src="./images/gunbilegt.jpg"
+                 class="w-20 h-20 rounded-xl border-4 border-orange-400 object-cover shadow-sm"/>
+            
+            <button onclick="openGallery()" class="absolute -bottom-2 -right-2 bg-orange-600 text-white p-1.5 rounded-full shadow-md hover:bg-orange-700 hover:scale-110 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="flex-1">
+          <h2 class="text-2xl font-bold text-gray-800">Гүнбилэг</h2>
+          <p class="text-sm text-gray-500 font-medium mb-2">6-Б анги</p>
+          
+          <button onclick="openGallery()" class="text-xs flex items-center gap-1 bg-orange-100 text-orange-700 px-3 py-1.5 rounded-full font-semibold hover:bg-orange-200 transition">
+             📷 Зураг үзэх (3)
+          </button>
         </div>
       </div>
 
-      <!-- STUDENT INFO -->
-      <div class="mb-5">
-        <h3 class="font-semibold text-orange-600 mb-2">👦 Хүүхдийн мэдээлэл</h3>
-        <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
-          <p>🎂 Нас: <b>12</b></p>
-          <p>🏫 Сургууль: <b>МУБИС</b></p>
-          <p>📘 Дуртай хичээл: <b>Математик</b></p>
-          <p>⭐ Сонирхол: <b>Шатар</b></p>
+      <div class="mb-6">
+        <h3 class="font-bold text-orange-600 mb-3 flex items-center gap-2">
+           👦 <span class="uppercase text-xs tracking-wider">Хүүхдийн мэдээлэл</span>
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-700 bg-orange-50/50 p-3 rounded-lg border border-orange-100">
+          <p>🎂 Нас: <b class="text-gray-900">12</b></p>
+          <p>🏫 Сургууль: <b class="text-gray-900">МУБИС</b></p>
+          <p>📘 Дуртай хичээл: <b class="text-gray-900">Математик</b></p>
+          <p>⭐ Сонирхол: <b class="text-gray-900">Шатар</b></p>
         </div>
       </div>
 
-      <!-- ACHIEVEMENTS -->
-      <div class="mb-5">
-        <h3 class="font-semibold text-orange-600 mb-2">🏆 Амжилт</h3>
-        <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
-          <li>Сургуулийн математикийн олимпиад – 🥈 2-р байр</li>
-          <li>Анги дотроо шатрын аварга</li>
-          <li>Мэдээлэл зүйн уралдаанд оролцсон</li>
+      <div class="mb-6">
+        <h3 class="font-bold text-orange-600 mb-3 flex items-center gap-2">
+            🏆 <span class="uppercase text-xs tracking-wider">Амжилт</span>
+        </h3>
+        <ul class="text-sm text-gray-700 space-y-2 list-none">
+          <li class="flex items-start gap-2">
+            <span class="text-yellow-500 mt-0.5">🥈</span> 
+            <span>Сургуулийн математикийн олимпиад – <b>2-р байр</b></span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-blue-500 mt-0.5">♟️</span> 
+            <span>Анги дотроо шатрын аварга</span>
+          </li>
         </ul>
       </div>
 
-      <!-- LETTER -->
       <div>
-        <h3 class="font-semibold text-orange-600 mb-2">💌 Хүндэт өвлийн өвөө танаа</h3>
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-gray-700 leading-relaxed">
-          <p class="mb-3">Сайн байна уу, хайрт өвөө минь.</p>
-
-          <p class="mb-3">
-            Би хичээлдээ сайн сурахыг хичээж байгаа шүү.
-            Таны зааж өгсөн тэвчээр, хөдөлмөрийн үнэ цэнийг
-            би үргэлж санаж явдаг.
-          </p>
-
-          <p class="mb-3">
-            Амралтаараа таныд очиж хамтдаа шатар тоглоно гэж
-            найдаж байна.
-          </p>
-
-          <p class="text-right mt-4">
-            Хайртай ач нь,<br>
-            <b>Гүнбилэг</b>
+        <h3 class="font-bold text-orange-600 mb-3 flex items-center gap-2">
+            💌 <span class="uppercase text-xs tracking-wider">Өвлийн өвөөд</span>
+        </h3>
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-gray-700 leading-relaxed shadow-inner">
+          <p class="mb-3">Сайн байна уу, хайрт өвөө минь. Би хичээлдээ сайн сурахыг хичээж байгаа шүү...</p>
+          <p class="text-right mt-4 font-handwriting">
+            Хайртай ач нь,<br><b class="text-orange-700">Гүнбилэг</b>
           </p>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- MODAL SCRIPT -->
+  <div id="gallery-modal" class="fixed inset-0 bg-black/95 hidden items-center justify-center z-[60] opacity-0 transition-opacity duration-300">
+    
+    <button onclick="closeGallery()" class="absolute top-5 right-5 text-white/70 hover:text-white z-50 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+
+    <div class="w-full h-full flex items-center justify-center p-4">
+        <img id="gallery-image" src="" class="max-w-full max-h-[85vh] object-contain rounded-md shadow-2xl transition-transform duration-300"/>
+    </div>
+
+    <button onclick="prevSlide()" class="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-md transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+
+    <button onclick="nextSlide()" class="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-md transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+    </button>
+
+    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/80 font-medium bg-black/50 px-3 py-1 rounded-full text-sm">
+        <span id="current-slide-num">1</span> / <span id="total-slides">3</span>
+    </div>
+  </div>
+
   <script>
+    // --- 1. Main Modal Logic ---
     const modal = document.getElementById("modal");
 
     function openModal() {
       modal.classList.remove("hidden");
       modal.classList.add("flex");
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
       modal.classList.add("hidden");
       modal.classList.remove("flex");
+      document.body.style.overflow = 'auto';
     }
-  </script>
 
-  <!-- SLIDER SCRIPT -->
-  <script>
+    modal.addEventListener('click', function(e) {
+      if(e.target === modal) closeModal();
+    });
+
+    // --- 2. Card Slider Logic ---
     document.addEventListener("DOMContentLoaded", () => {
       let current = 0;
       const slides = document.querySelectorAll(".slide");
-
       if (slides.length === 0) return;
-
       setInterval(() => {
         slides[current].classList.replace("opacity-100", "opacity-0");
         current = (current + 1) % slides.length;
         slides[current].classList.replace("opacity-0", "opacity-100");
       }, 3000);
     });
+
+    // --- 3. Gallery Modal Logic (ШИНЭ) ---
+    
+    // Энд зургуудынхаа link-ийг хийнэ
+    const galleryImages = [
+        "./images/gunbilegt.jpg", 
+        "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?q=80&w=600&auto=format&fit=crop"
+    ];
+
+    let currentSlideIndex = 0;
+    const galleryModal = document.getElementById("gallery-modal");
+    const galleryImage = document.getElementById("gallery-image");
+    const currentSlideNum = document.getElementById("current-slide-num");
+    const totalSlides = document.getElementById("total-slides");
+
+    // Initialize total count
+    totalSlides.innerText = galleryImages.length;
+
+    function openGallery() {
+        // Галерей нээхэд эхний зургийг харуулна
+        currentSlideIndex = 0;
+        updateGalleryImage();
+        
+        galleryModal.classList.remove("hidden");
+        galleryModal.classList.add("flex");
+        // Animation
+        setTimeout(() => galleryModal.classList.remove("opacity-0"), 10);
+    }
+
+    function closeGallery() {
+        galleryModal.classList.add("opacity-0");
+        setTimeout(() => {
+            galleryModal.classList.add("hidden");
+            galleryModal.classList.remove("flex");
+        }, 300);
+    }
+
+    function updateGalleryImage() {
+        // Зургийг солих
+        galleryImage.style.opacity = '0.5'; // бага зэрэг бүдгэрүүлж шилжилт мэдрүүлнэ
+        setTimeout(() => {
+            galleryImage.src = galleryImages[currentSlideIndex];
+            galleryImage.style.opacity = '1';
+        }, 150);
+        
+        // Тоог шинэчлэх
+        currentSlideNum.innerText = currentSlideIndex + 1;
+    }
+
+    function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % galleryImages.length;
+        updateGalleryImage();
+    }
+
+    function prevSlide() {
+        currentSlideIndex = (currentSlideIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateGalleryImage();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!galleryModal.classList.contains('hidden')) {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'Escape') closeGallery();
+        }
+    });
+
   </script>
 
-  <!-- ANIMATION -->
   <style>
     @keyframes scaleIn {
-      from { transform: scale(0.85); opacity: 0; }
+      from { transform: scale(0.9); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
     .animate-scaleIn {
-      animation: scaleIn 0.25s ease-out;
+      animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
   </style>
 
