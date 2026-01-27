@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <title>Сурагчийн танилцуулга</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-100 to-orange-200">
+
+  <!-- CARD -->
+  <div 
+    class="bg-white w-80 rounded-2xl shadow-xl overflow-hidden 
+           transform transition hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
+    onclick="openModal()"
+  >
+
+    <!-- IMAGE SLIDER -->
+    <div class="relative w-full h-48 overflow-hidden">
+
+      <img src="./images/gunbilegt.jpg"
+           class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100"/>
+
+      <img src="./images/gunbilegt.jpg"
+           class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"/>
+
+      <img src="./images/gunbilegt.jpg"
+           class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"/>
+
+      <!-- gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-t from-green-700/60 to-green-200/20"></div>
+
+      <!-- name -->
+      <div class="absolute bottom-3 left-4 text-white">
+        <h2 class="text-lg font-bold">Гүнбилэг</h2>
+        <p class="text-xs opacity-90">6-Б анги</p>
+      </div>
+    </div>
+
+    <!-- CARD FOOTER -->
+    <div class="p-5 text-center">
+      <p class="text-xs text-orange-600">
+        👦 Мэдээлэл • 🏆 Амжилт • 💌 Захидал
+      </p>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-2xl w-[460px] p-6 relative animate-scaleIn max-h-[90vh] overflow-y-auto">
+
+      <button 
+        onclick="closeModal()"
+        class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-xl"
+      >✖</button>
+
+      <!-- HEADER -->
+      <div class="flex items-center gap-4 mb-4">
+        <img src="./images/gunbilegt.jpg"
+             class="w-20 h-20 rounded-xl border-4 border-orange-400 object-cover"/>
+        <div>
+          <h2 class="text-xl font-bold">Гүнбилэг</h2>
+          <p class="text-sm text-gray-500">6-Б анги</p>
+        </div>
+      </div>
+
+      <!-- STUDENT INFO -->
+      <div class="mb-5">
+        <h3 class="font-semibold text-orange-600 mb-2">👦 Хүүхдийн мэдээлэл</h3>
+        <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
+          <p>🎂 Нас: <b>12</b></p>
+          <p>🏫 Сургууль: <b>МУБИС</b></p>
+          <p>📘 Дуртай хичээл: <b>Математик</b></p>
+          <p>⭐ Сонирхол: <b>Шатар</b></p>
+        </div>
+      </div>
+
+      <!-- ACHIEVEMENTS -->
+      <div class="mb-5">
+        <h3 class="font-semibold text-orange-600 mb-2">🏆 Амжилт</h3>
+        <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
+          <li>Сургуулийн математикийн олимпиад – 🥈 2-р байр</li>
+          <li>Анги дотроо шатрын аварга</li>
+          <li>Мэдээлэл зүйн уралдаанд оролцсон</li>
+        </ul>
+      </div>
+
+      <!-- LETTER -->
+      <div>
+        <h3 class="font-semibold text-orange-600 mb-2">💌 Хүндэт өвлийн өвөө танаа</h3>
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-gray-700 leading-relaxed">
+          <p class="mb-3">Сайн байна уу, хайрт өвөө минь.</p>
+
+          <p class="mb-3">
+            Би хичээлдээ сайн сурахыг хичээж байгаа шүү.
+            Таны зааж өгсөн тэвчээр, хөдөлмөрийн үнэ цэнийг
+            би үргэлж санаж явдаг.
+          </p>
+
+          <p class="mb-3">
+            Амралтаараа таныд очиж хамтдаа шатар тоглоно гэж
+            найдаж байна.
+          </p>
+
+          <p class="text-right mt-4">
+            Хайртай ач нь,<br>
+            <b>Гүнбилэг</b>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL SCRIPT -->
+  <script>
+    const modal = document.getElementById("modal");
+
+    function openModal() {
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeModal() {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+  </script>
+
+  <!-- SLIDER SCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let current = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      if (slides.length === 0) return;
+
+      setInterval(() => {
+        slides[current].classList.replace("opacity-100", "opacity-0");
+        current = (current + 1) % slides.length;
+        slides[current].classList.replace("opacity-0", "opacity-100");
+      }, 3000);
+    });
+  </script>
+
+  <!-- ANIMATION -->
+  <style>
+    @keyframes scaleIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .animate-scaleIn {
+      animation: scaleIn 0.25s ease-out;
+    }
+  </style>
+
+</body>
+</html>
