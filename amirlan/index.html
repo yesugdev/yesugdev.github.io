@@ -63,10 +63,15 @@
           <h2 class="text-2xl font-bold text-gray-800">Амирлан</h2>
           <p class="text-sm text-gray-500 font-medium mb-2">1-A АНГИ</p>
           
-          <div class="flex gap-2 flex-wrap">
-  <button onclick="openGallery()">📷 Миний сан үзэх</button>
-  <button onclick="openCertificate()">🏆 Батламж харах</button>  ← ШИНЭ
-</div>
+            <div class="flex gap-2 flex-wrap">
+            <button onclick="openGallery()" class="text-xs flex items-center gap-1 bg-orange-100 text-orange-700 px-3 py-1.5 rounded-full font-semibold hover:bg-orange-200 transition">
+               📷 Миний сан үзэх
+            </button>
+            <button onclick="openCertificate()" class="text-xs flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1.5 rounded-full font-semibold hover:bg-green-200 transition">
+               🏆 Батламж харах
+            </button>
+          </div>
+          
         </div>
       </div>
 
@@ -130,7 +135,7 @@
   </div>
 
 
-  <!-- Gallery Modal -->
+   <!-- Gallery Modal -->
   <div id="gallery-modal" class="fixed inset-0 bg-black/95 hidden items-center justify-center z-[60] opacity-0 transition-opacity duration-300">
     
     <button onclick="closeGallery()" class="absolute top-5 right-5 text-white/70 hover:text-white z-50 p-2">
@@ -218,9 +223,9 @@
     // --- 3. Gallery Modal Logic ---
     
     // Энд зургуудынхаа link-ийг хийнэ
-   const galleryImages = ["./images/amin-erdene1.jfif"];
+   const galleryImages = ["./images/amirlan1.jfif"];
 
-for (let i = 1; i <= 5; i++) {
+for (let i = 6; i >= 1; i--) {
   galleryImages.push(`./images/${i}.jpg`);
 }
 
