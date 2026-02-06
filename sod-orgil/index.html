@@ -91,7 +91,7 @@
   <ul class="text-sm text-gray-700 space-y-2 list-none">
     <li class="flex items-start gap-2">
       <span class="text-green-500 mt-0.5">✏️</span> 
-      <span><b>Би бичиж сурлаа</b></span>
+      <span><b>Би уншиж, бичиж сурлаа</b></span>
     </li>
     <li class="flex items-start gap-2">
       <span class="text-blue-500 mt-0.5">🧠</span> 
@@ -105,31 +105,22 @@
 </div>
 
 
- <div>
-  <h3 class="font-bold text-orange-600 mb-3 flex items-center gap-2">
-      💌 <span class="uppercase text-xs tracking-wider">Өвлийн өвөөд</span>
-  </h3>
-  <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-gray-700 leading-relaxed shadow-inner">
-    
-    <p class="mb-2 font-semibold text-center">Хүндэт өвлийн өвөө танаа,</p>
+<div class="relative group w-full max-w-sm mx-auto cursor-pointer">
+  <!-- Image -->
+  <img 
+    src="./images/1.jpg"
+    alt="Өвлийн өвөөд"
+    class="w-full h-auto rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-105"
+  />
 
-    <p class="mb-2">Миний нэр: <b>Сүлд</b></p>
-    <p class="mb-2">Би <b>6</b> настай.</p>
-
-    <p class="mb-2">
-      Энэ жил миний хувьд<br>
-      Би сурагч болох байлаа.
-    </p>
-
-    <p class="mb-2">Энэ зүйл миний хүсэх зүйлсийн жагсаалт:</p>
-    <ol class="list-decimal list-inside mb-3 ml-2">
-      <li>Tablet</li>
-      <li>Гоё тоглоом</li>
-      <li>Гадаад явах</li>
-    </ol>
-
-    <p class="text-right mt-4 font-handwriting">
-      Хүндэтгэсэн: <b>Сод-оргил</b>
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/40 rounded-2xl 
+              opacity-0 group-hover:opacity-100 
+              transition-opacity duration-500
+              flex items-center justify-center text-center p-4">
+    <p class="text-white text-lg font-semibold leading-relaxed">
+      💌 Аав ээждээ <br>
+      <span class="text-sm opacity-90">бичсэн захидал</span>
     </p>
   </div>
 </div>

@@ -63,9 +63,10 @@
           <h2 class="text-2xl font-bold text-gray-800">Амирлан</h2>
           <p class="text-sm text-gray-500 font-medium mb-2">1-A АНГИ</p>
           
-          <button onclick="openGallery()" class="text-xs flex items-center gap-1 bg-orange-100 text-orange-700 px-3 py-1.5 rounded-full font-semibold hover:bg-orange-200 transition">
-             📷 Миний сан үзэх
-          </button>
+          <div class="flex gap-2 flex-wrap">
+  <button onclick="openGallery()">📷 Миний сан үзэх</button>
+  <button onclick="openCertificate()">🏆 Батламж харах</button>  ← ШИНЭ
+</div>
         </div>
       </div>
 
@@ -91,7 +92,7 @@
   <ul class="text-sm text-gray-700 space-y-2 list-none">
     <li class="flex items-start gap-2">
       <span class="text-green-500 mt-0.5">✏️</span> 
-      <span><b>Би бичиж сурлаа</b></span>
+      <span><b>Би уншиж, бичиж сурлаа</b></span>
     </li>
     <li class="flex items-start gap-2">
       <span class="text-blue-500 mt-0.5">🧠</span> 
@@ -104,10 +105,32 @@
   </ul>
 </div>
 
+<div class="relative group w-full max-w-sm mx-auto cursor-pointer">
+  <!-- Image -->
+  <img 
+    src="./images/1.jpg"
+    alt="Өвлийн өвөөд"
+    class="w-full h-auto rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-105"
+  />
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/40 rounded-2xl 
+              opacity-0 group-hover:opacity-100 
+              transition-opacity duration-500
+              flex items-center justify-center text-center p-4">
+    <p class="text-white text-lg font-semibold leading-relaxed">
+      💌 Аав ээждээ <br>
+      <span class="text-sm opacity-90">бичсэн захидал</span>
+    </p>
+  </div>
+</div>
+
 
     </div>
   </div>
 
+
+  <!-- Gallery Modal -->
   <div id="gallery-modal" class="fixed inset-0 bg-black/95 hidden items-center justify-center z-[60] opacity-0 transition-opacity duration-300">
     
     <button onclick="closeGallery()" class="absolute top-5 right-5 text-white/70 hover:text-white z-50 p-2">
@@ -134,6 +157,29 @@
 
     <div class="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/80 font-medium bg-black/50 px-3 py-1 rounded-full text-sm">
         <span id="current-slide-num">1</span> / <span id="total-slides">3</span>
+    </div>
+  </div>
+
+  <!-- Certificate Modal (ШИНЭ) -->
+  <div id="certificate-modal" class="fixed inset-0 bg-black/95 hidden items-center justify-center z-[70] opacity-0 transition-opacity duration-300">
+    
+    <button onclick="closeCertificate()" class="absolute top-5 right-5 text-white/70 hover:text-white z-50 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+
+    <div class="w-full h-full flex flex-col items-center justify-center p-4 gap-4">
+        <!-- Certificate Image -->
+        <img src="./images/batlamj.jpg" 
+             class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl border-4 border-yellow-400 animate-scaleIn"/>
+        
+        <!-- Title/Caption -->
+        <div class="bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 px-6 py-3 rounded-full shadow-lg animate-scaleIn">
+            <p class="text-white font-bold text-lg flex items-center gap-2">
+                🏆 Миний Батламж 🏆
+            </p>
+        </div>
     </div>
   </div>
 
@@ -169,12 +215,12 @@
       }, 3000);
     });
 
-    // --- 3. Gallery Modal Logic (ШИНЭ) ---
+    // --- 3. Gallery Modal Logic ---
     
     // Энд зургуудынхаа link-ийг хийнэ
-   const galleryImages = ["./images/amirlan1.jfif"];
+   const galleryImages = ["./images/amin-erdene1.jfif"];
 
-for (let i = 1; i <= 15; i++) {
+for (let i = 1; i <= 5; i++) {
   galleryImages.push(`./images/${i}.jpg`);
 }
 
@@ -231,12 +277,43 @@ console.log(galleryImages);
         updateGalleryImage();
     }
 
-    // Keyboard navigation
+    // Keyboard navigation for gallery
     document.addEventListener('keydown', function(e) {
         if (!galleryModal.classList.contains('hidden')) {
             if (e.key === 'ArrowRight') nextSlide();
             if (e.key === 'ArrowLeft') prevSlide();
             if (e.key === 'Escape') closeGallery();
+        }
+    });
+
+    // --- 4. Certificate Modal Logic (ШИНЭ) ---
+    
+    const certificateModal = document.getElementById("certificate-modal");
+
+    function openCertificate() {
+        certificateModal.classList.remove("hidden");
+        certificateModal.classList.add("flex");
+        // Animation
+        setTimeout(() => certificateModal.classList.remove("opacity-0"), 10);
+    }
+
+    function closeCertificate() {
+        certificateModal.classList.add("opacity-0");
+        setTimeout(() => {
+            certificateModal.classList.add("hidden");
+            certificateModal.classList.remove("flex");
+        }, 300);
+    }
+
+    // Click outside to close
+    certificateModal.addEventListener('click', function(e) {
+        if(e.target === certificateModal) closeCertificate();
+    });
+
+    // Keyboard navigation for certificate
+    document.addEventListener('keydown', function(e) {
+        if (!certificateModal.classList.contains('hidden')) {
+            if (e.key === 'Escape') closeCertificate();
         }
     });
 
